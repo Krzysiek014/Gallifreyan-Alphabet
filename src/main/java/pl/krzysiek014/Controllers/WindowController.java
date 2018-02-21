@@ -198,6 +198,22 @@ public class WindowController {
                             window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
                         }
                         break;
+                    case "E":
+                        if(list[count-1].matches("[TRSVW]")){
+                            info = ((HalfOfCircle)listOfLetters.get(listOfLetters.size()-1)).getInfo();
+                            Point2D p = oper.getPoint(info[4],word.getCenterX(),word.getCenterY(),word.getRadius());
+                            window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
+                        }else if(list[count-1].matches("[YZX]")){
+                            info = ((FullCircleOnLine)listOfLetters.get(listOfLetters.size()-1)).getInfo();
+                            Point2D p = oper.getPoint(info[4],word.getCenterX(),word.getCenterY(),word.getRadius());
+                            window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
+                        }else if(list[count-1].matches("[JKLMNP]")){
+                            info = ((FullCircle)listOfLetters.get(listOfLetters.size()-1)).getInfo();
+                            window.getChildren().addAll(new Vowel(info[0],info[1],radiusInner*20));
+                        }else if(list[count-1].matches("[BDFGH]")){
+                            info = ((AlmostCircle)listOfLetters.get(listOfLetters.size()-1)).getInfo();
+                            window.getChildren().addAll(new Vowel(info[0],info[1],radiusInner*20));
+                        }
                     default:
                         break;
                 }
