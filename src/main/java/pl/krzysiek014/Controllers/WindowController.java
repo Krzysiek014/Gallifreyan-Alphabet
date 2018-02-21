@@ -10,6 +10,7 @@ import javafx.scene.shape.Circle;
 import pl.krzysiek014.Letter.AlmostCircle;
 import pl.krzysiek014.Letter.FullCircle;
 import pl.krzysiek014.Letter.HalfOfCircle;
+import pl.krzysiek014.Letter.LinesAndDots;
 import pl.krzysiek014.Math.MathOperations;
 
 /**
@@ -33,9 +34,30 @@ public class WindowController {
             String[] list = textField.getText().split("");
             double radiusInner = Math.pow(0.9,list.length-1);
             for(int i =0, count = 0;i<360;i+=360/list.length,count++){
+                LinesAndDots ld;
                 switch (list[count].toUpperCase()){
                     case "B":
                         window.getChildren().add(new AlmostCircle(i,word,radiusInner));
+                        break;
+                    case "D":
+                        ld = new LinesAndDots("dots",3,new AlmostCircle(i,word,radiusInner),i);
+                        window.getChildren().add(new AlmostCircle(i,word,radiusInner));
+                        window.getChildren().addAll(ld.getDots());
+                        break;
+                    case "F":
+                        ld = new LinesAndDots("lines",3,new AlmostCircle(i,word,radiusInner),i);
+                        window.getChildren().add(new AlmostCircle(i,word,radiusInner));
+                        window.getChildren().addAll(ld.getLines());
+                        break;
+                    case "G":
+                        ld = new LinesAndDots("lines",1,new AlmostCircle(i,word,radiusInner),i);
+                        window.getChildren().add(new AlmostCircle(i,word,radiusInner));
+                        window.getChildren().addAll(ld.getLines());
+                        break;
+                    case "H":
+                        ld = new LinesAndDots("lines",2,new AlmostCircle(i,word,radiusInner),i);
+                        window.getChildren().add(new AlmostCircle(i,word,radiusInner));
+                        window.getChildren().addAll(ld.getLines());
                         break;
                     case "J":
                         Point2D p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),200-(100*radiusInner));
@@ -44,7 +66,8 @@ public class WindowController {
                     case "T":
                         Point2D start = oper.getPoint(i-(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
                         Point2D end = oper.getPoint(i+(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
-                        window.getChildren().add(new HalfOfCircle(start.getX(),start.getY(),end.getX(),end.getY()));
+                        HalfOfCircle halfOfCircle = new HalfOfCircle(start.getX(),start.getY(),end.getX(),end.getY());
+                        window.getChildren().add(halfOfCircle);
                         break;
                     default:
                         break;
