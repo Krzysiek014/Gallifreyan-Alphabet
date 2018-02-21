@@ -1,10 +1,7 @@
 package pl.krzysiek014.Letter;
 
 import javafx.geometry.Point2D;
-import javafx.scene.shape.Arc;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Path;
+import javafx.scene.shape.*;
 import pl.krzysiek014.Math.MathOperations;
 
 /**
@@ -34,10 +31,16 @@ public class LinesAndDots{
                 this.dots = makeDots(c.getCenterX(),c.getCenterY(),c.getRadiusX(),howMany, angle);
                 break;
         }
-
     }
-    public LinesAndDots(int howMany, Path c){
-
+    public LinesAndDots(String what, int howMany, double centerX, double centerY, double radius, double angle){
+        switch (what){
+            case "lines":
+                this.lines = makeLines(centerX,centerY,radius,howMany, angle);
+                break;
+            case "dots":
+                this.dots = makeDots(centerX,centerY,radius,howMany, angle);
+                break;
+        }
     }
 
     private Line[] makeLines(double centerX, double centerY, double radius, double howMany, double angle){
