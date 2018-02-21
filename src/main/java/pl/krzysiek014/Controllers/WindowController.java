@@ -35,7 +35,8 @@ public class WindowController {
             double radiusInner = Math.pow(0.9,list.length-1);
             for(int i =0, count = 0;i<360;i+=360/list.length,count++){
                 LinesAndDots ld;
-                Point2D p;
+                Point2D p, start, end;
+                double centerX, centerY, diffX, diffY;
                 switch (list[count].toUpperCase()){
                     case "B":
                         window.getChildren().add(new AlmostCircle(i,word,radiusInner));
@@ -95,10 +96,61 @@ public class WindowController {
                         window.getChildren().addAll(ld.getLines());
                         break;
                     case "T":
-                        Point2D start = oper.getPoint(i-(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
-                        Point2D end = oper.getPoint(i+(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
-                        HalfOfCircle halfOfCircle = new HalfOfCircle(start.getX(),start.getY(),end.getX(),end.getY());
-                        window.getChildren().add(halfOfCircle);
+                        start = oper.getPoint(i-(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
+                        end = oper.getPoint(i+(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
+                        window.getChildren().add(new HalfOfCircle(start.getX(),start.getY(),end.getX(),end.getY()));
+                        break;
+                    case "R":
+                        start = oper.getPoint(i-(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
+                        end = oper.getPoint(i+(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
+
+                        centerX = Math.abs((start.getX()+end.getX())/2);
+                        centerY = Math.abs((start.getY()+end.getY())/2);
+                        diffX =(centerX-start.getX())*(centerX-start.getX());
+                        diffY =(centerY-start.getY())*(centerY-start.getY());
+                        ld = new LinesAndDots("dots",3,centerX,centerY,Math.sqrt(diffX+diffY),i);
+
+                        window.getChildren().add(new HalfOfCircle(start.getX(),start.getY(),end.getX(),end.getY()));
+                        window.getChildren().addAll(ld.getDots());
+                        break;
+                    case "S":
+                        start = oper.getPoint(i-(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
+                        end = oper.getPoint(i+(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
+
+                        centerX = Math.abs((start.getX()+end.getX())/2);
+                        centerY = Math.abs((start.getY()+end.getY())/2);
+                        diffX =(centerX-start.getX())*(centerX-start.getX());
+                        diffY =(centerY-start.getY())*(centerY-start.getY());
+                        ld = new LinesAndDots("lines",3,centerX,centerY,Math.sqrt(diffX+diffY),i);
+
+                        window.getChildren().add(new HalfOfCircle(start.getX(),start.getY(),end.getX(),end.getY()));
+                        window.getChildren().addAll(ld.getLines());
+                        break;
+                    case "V":
+                        start = oper.getPoint(i-(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
+                        end = oper.getPoint(i+(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
+
+                        centerX = Math.abs((start.getX()+end.getX())/2);
+                        centerY = Math.abs((start.getY()+end.getY())/2);
+                        diffX =(centerX-start.getX())*(centerX-start.getX());
+                        diffY =(centerY-start.getY())*(centerY-start.getY());
+                        ld = new LinesAndDots("lines",1,centerX,centerY,Math.sqrt(diffX+diffY),i);
+
+                        window.getChildren().add(new HalfOfCircle(start.getX(),start.getY(),end.getX(),end.getY()));
+                        window.getChildren().addAll(ld.getLines());
+                        break;
+                    case "W":
+                        start = oper.getPoint(i-(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
+                        end = oper.getPoint(i+(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
+
+                        centerX = Math.abs((start.getX()+end.getX())/2);
+                        centerY = Math.abs((start.getY()+end.getY())/2);
+                        diffX =(centerX-start.getX())*(centerX-start.getX());
+                        diffY =(centerY-start.getY())*(centerY-start.getY());
+                        ld = new LinesAndDots("lines",2,centerX,centerY,Math.sqrt(diffX+diffY),i);
+
+                        window.getChildren().add(new HalfOfCircle(start.getX(),start.getY(),end.getX(),end.getY()));
+                        window.getChildren().addAll(ld.getLines());
                         break;
                     default:
                         break;
