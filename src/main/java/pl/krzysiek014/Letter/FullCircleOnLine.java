@@ -13,6 +13,7 @@ import pl.krzysiek014.Math.MathOperations;
 public class FullCircleOnLine extends Path{
 
     private Point2D startPoint, endPoint;
+    private double angle;
 
     public FullCircleOnLine(Circle word, double radiusInner, double i){
         MathOperations oper = new MathOperations();
@@ -21,6 +22,7 @@ public class FullCircleOnLine extends Path{
         endPoint = oper.getPoint(i+(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
 
         MoveTo start = new MoveTo(startPoint.getX(),startPoint.getY());
+        this.angle = i;
 
         ArcTo arcTo = new ArcTo();
         arcTo.setRadiusX(1);
@@ -42,6 +44,6 @@ public class FullCircleOnLine extends Path{
         double centerY = Math.abs((startPoint.getY()+endPoint.getY())/2);
         double diffX =(centerX-startPoint.getX())*(centerX-startPoint.getX());
         double diffY =(centerY-startPoint.getY())*(centerY-startPoint.getY());
-        return new double[]{centerX,centerY,diffX,diffY};
+        return new double[]{centerX,centerY,diffX,diffY,angle};
     }
 }

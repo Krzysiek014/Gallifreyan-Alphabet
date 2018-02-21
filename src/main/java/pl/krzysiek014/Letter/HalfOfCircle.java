@@ -13,8 +13,9 @@ import pl.krzysiek014.Math.MathOperations;
 public class HalfOfCircle extends Path{
 
     private ArcTo arcTo;
-    MoveTo start;
-    Point2D startPoint,endPoint;
+    private MoveTo start;
+    private Point2D startPoint,endPoint;
+    private double angle;
 
     public HalfOfCircle(Circle word, double radiusInner, double i){
         MathOperations oper = new MathOperations();
@@ -23,7 +24,7 @@ public class HalfOfCircle extends Path{
         endPoint = oper.getPoint(i+(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
 
         start = new MoveTo(startPoint.getX(),startPoint.getY());
-
+        this.angle = i;
         arcTo = new ArcTo();
         arcTo.setRadiusX(1);
         arcTo.setRadiusY(1);
@@ -39,6 +40,6 @@ public class HalfOfCircle extends Path{
         double centerY = Math.abs((start.getY()+arcTo.getY())/2);
         double diffX =(centerX-start.getX())*(centerX-start.getX());
         double diffY =(centerY-start.getY())*(centerY-start.getY());
-        return new double[]{centerX,centerY,diffX,diffY};
+        return new double[]{centerX,centerY,diffX,diffY,angle};
     }
 }
