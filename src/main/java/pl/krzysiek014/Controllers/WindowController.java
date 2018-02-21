@@ -160,6 +160,25 @@ public class WindowController {
                         window.getChildren().addAll(ld.getLines());
                         listOfLetters.add(fullCircleOnLine);
                         break;
+                    case "O":
+                        if(list[count-1].matches("[TRSVW]")){
+                            info = ((HalfOfCircle)listOfLetters.get(listOfLetters.size()-1)).getInfo();
+                            Point2D p = oper.getPoint(info[4]+130,info[0],info[1],Math.sqrt(info[2]+info[3]));
+                            window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
+                        }else if(list[count-1].matches("[YZX]")){
+                            info = ((FullCircleOnLine)listOfLetters.get(listOfLetters.size()-1)).getInfo();
+                            Point2D p = oper.getPoint(info[4]+130,info[0],info[1],Math.sqrt(info[2]+info[3]));
+                            window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
+                        }else if(list[count-1].matches("[JKLMNP]")){
+                            info = ((FullCircle)listOfLetters.get(listOfLetters.size()-1)).getInfo();
+                            Point2D p = oper.getPoint(info[4]+130,info[0],info[1],info[2]);
+                            window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
+                        }else if(list[count-1].matches("[BDFGH]")){
+                            info = ((AlmostCircle)listOfLetters.get(listOfLetters.size()-1)).getInfo();
+                            Point2D p = oper.getPoint(info[4]+130,info[0],info[1],info[2]);
+                            window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
+                        }
+                        break;
                     default:
                         break;
                 }
