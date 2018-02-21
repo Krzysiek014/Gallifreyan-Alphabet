@@ -25,7 +25,15 @@ public class LinesAndDots{
                 break;
         }
     }
-    public LinesAndDots(int howMany, Arc c){
+    public LinesAndDots(String what, int howMany, Arc c, double angle){
+        switch (what){
+            case "lines":
+                this.lines = makeLines(c.getCenterX(),c.getCenterY(),c.getRadiusX(),howMany, angle);
+                break;
+            case "dots":
+                this.dots = makeDots(c.getCenterX(),c.getCenterY(),c.getRadiusX(),howMany, angle);
+                break;
+        }
 
     }
     public LinesAndDots(int howMany, Path c){
@@ -71,8 +79,8 @@ public class LinesAndDots{
         }else if(howMany==2){
             Point2D start1 = oper.getPoint(150+angle,centerX,centerY,radius-20);
             Point2D start2 = oper.getPoint(210+angle,centerX,centerY,radius-20);
-            Circle c1 = new Circle(start1.getX(),start1.getY(),10);
-            Circle c2 = new Circle(start2.getX(),start2.getY(),10);
+            Circle c1 = new Circle(start1.getX(),start1.getY(),radius*0.1);
+            Circle c2 = new Circle(start2.getX(),start2.getY(),radius*0.1);
             return new Circle[]{c1,c2};
         }else if(howMany==3){
             Point2D start1 = oper.getPoint(180+angle,centerX,centerY,radius-20);
