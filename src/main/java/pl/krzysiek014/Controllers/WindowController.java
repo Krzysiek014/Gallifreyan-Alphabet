@@ -35,6 +35,7 @@ public class WindowController {
             double radiusInner = Math.pow(0.9,list.length-1);
             for(int i =0, count = 0;i<360;i+=360/list.length,count++){
                 LinesAndDots ld;
+                Point2D p;
                 switch (list[count].toUpperCase()){
                     case "B":
                         window.getChildren().add(new AlmostCircle(i,word,radiusInner));
@@ -60,8 +61,38 @@ public class WindowController {
                         window.getChildren().addAll(ld.getLines());
                         break;
                     case "J":
-                        Point2D p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),200-(100*radiusInner));
+                        p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),200-(100*radiusInner));
                         window.getChildren().add(new FullCircle(p.getX(),p.getY(),radiusInner*90));
+                        break;
+                    case "K":
+                        p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),200-(100*radiusInner));
+                        ld = new LinesAndDots("dots",2,new FullCircle(p.getX(),p.getY(),radiusInner*90),i);
+                        window.getChildren().add(new FullCircle(p.getX(),p.getY(),radiusInner*90));
+                        window.getChildren().addAll(ld.getDots());
+                        break;
+                    case "L":
+                        p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),200-(100*radiusInner));
+                        ld = new LinesAndDots("dots",3,new FullCircle(p.getX(),p.getY(),radiusInner*90),i);
+                        window.getChildren().add(new FullCircle(p.getX(),p.getY(),radiusInner*90));
+                        window.getChildren().addAll(ld.getDots());
+                        break;
+                    case "M":
+                        p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),200-(100*radiusInner));
+                        ld = new LinesAndDots("lines",3,new FullCircle(p.getX(),p.getY(),radiusInner*90),i);
+                        window.getChildren().add(new FullCircle(p.getX(),p.getY(),radiusInner*90));
+                        window.getChildren().addAll(ld.getLines());
+                        break;
+                    case "N":
+                        p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),200-(100*radiusInner));
+                        ld = new LinesAndDots("lines",1,new FullCircle(p.getX(),p.getY(),radiusInner*90),i);
+                        window.getChildren().add(new FullCircle(p.getX(),p.getY(),radiusInner*90));
+                        window.getChildren().addAll(ld.getLines());
+                        break;
+                    case "P":
+                        p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),200-(100*radiusInner));
+                        ld = new LinesAndDots("lines",2,new FullCircle(p.getX(),p.getY(),radiusInner*90),i);
+                        window.getChildren().add(new FullCircle(p.getX(),p.getY(),radiusInner*90));
+                        window.getChildren().addAll(ld.getLines());
                         break;
                     case "T":
                         Point2D start = oper.getPoint(i-(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
