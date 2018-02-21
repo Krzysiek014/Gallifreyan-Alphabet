@@ -1,18 +1,29 @@
 package pl.krzysiek014.Letter;
 
+import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import pl.krzysiek014.Math.MathOperations;
 
 /**
  * Created by Krzysiek014 on 21.02.2018.
  */
 public class FullCircle extends Circle {
-    public FullCircle(double x, double y, double r){
-        this.setCenterX(x);
-        this.setCenterY(y);
-        this.setRadius(r);
+
+    Point2D p;
+
+    public FullCircle(Circle word, double radiusInner, double i){
+        MathOperations oper = new MathOperations();
+        p  = oper.getPoint(i,word.getCenterX(),word.getCenterY(),200-(100*radiusInner));
+        this.setCenterX(p.getX());
+        this.setCenterY(p.getY());
+        this.setRadius(radiusInner*90);
 
         this.setFill(Color.WHITE);
         this.setStroke(Color.BLACK);
+    }
+
+    public double[] getInfo() {
+        return new double[]{p.getX(),p.getY()};
     }
 }

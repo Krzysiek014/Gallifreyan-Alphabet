@@ -39,6 +39,7 @@ public class WindowController {
                 double[] info;
                 HalfOfCircle halfOfCircle;
                 FullCircleOnLine fullCircleOnLine;
+                FullCircle fullCircle;
                 switch (list[count]){
                     case "B":
                         window.getChildren().add(new AlmostCircle(i,word,radiusInner));
@@ -64,37 +65,36 @@ public class WindowController {
                         window.getChildren().addAll(ld.getLines());
                         break;
                     case "J":
-                        p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),200-(100*radiusInner));
-                        window.getChildren().add(new FullCircle(p.getX(),p.getY(),radiusInner*90));
+                        window.getChildren().add(new FullCircle(word,radiusInner,i));
                         break;
                     case "K":
-                        p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),200-(100*radiusInner));
-                        ld = new LinesAndDots("dots",2,new FullCircle(p.getX(),p.getY(),radiusInner*90),i);
-                        window.getChildren().add(new FullCircle(p.getX(),p.getY(),radiusInner*90));
+                        fullCircle = new FullCircle(word,radiusInner,i);
+                        ld = new LinesAndDots("dots",2,fullCircle,i);
+                        window.getChildren().add(fullCircle);
                         window.getChildren().addAll(ld.getDots());
                         break;
                     case "L":
-                        p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),200-(100*radiusInner));
-                        ld = new LinesAndDots("dots",3,new FullCircle(p.getX(),p.getY(),radiusInner*90),i);
-                        window.getChildren().add(new FullCircle(p.getX(),p.getY(),radiusInner*90));
+                        fullCircle = new FullCircle(word,radiusInner,i);
+                        ld = new LinesAndDots("dots",3,fullCircle,i);
+                        window.getChildren().add(fullCircle);
                         window.getChildren().addAll(ld.getDots());
                         break;
                     case "M":
-                        p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),200-(100*radiusInner));
-                        ld = new LinesAndDots("lines",3,new FullCircle(p.getX(),p.getY(),radiusInner*90),i);
-                        window.getChildren().add(new FullCircle(p.getX(),p.getY(),radiusInner*90));
+                        fullCircle = new FullCircle(word,radiusInner,i);
+                        ld = new LinesAndDots("lines",3,fullCircle,i);
+                        window.getChildren().add(fullCircle);
                         window.getChildren().addAll(ld.getLines());
                         break;
                     case "N":
-                        p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),200-(100*radiusInner));
-                        ld = new LinesAndDots("lines",1,new FullCircle(p.getX(),p.getY(),radiusInner*90),i);
-                        window.getChildren().add(new FullCircle(p.getX(),p.getY(),radiusInner*90));
+                        fullCircle = new FullCircle(word,radiusInner,i);
+                        ld = new LinesAndDots("lines",1,fullCircle,i);
+                        window.getChildren().add(fullCircle);
                         window.getChildren().addAll(ld.getLines());
                         break;
                     case "P":
-                        p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),200-(100*radiusInner));
-                        ld = new LinesAndDots("lines",2,new FullCircle(p.getX(),p.getY(),radiusInner*90),i);
-                        window.getChildren().add(new FullCircle(p.getX(),p.getY(),radiusInner*90));
+                        fullCircle = new FullCircle(word,radiusInner,i);
+                        ld = new LinesAndDots("lines",2,fullCircle,i);
+                        window.getChildren().add(fullCircle);
                         window.getChildren().addAll(ld.getLines());
                         break;
                     case "T":
