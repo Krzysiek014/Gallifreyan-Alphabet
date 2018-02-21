@@ -8,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import pl.krzysiek014.Letter.AlmostCircle;
+import pl.krzysiek014.Letter.FullCircle;
 import pl.krzysiek014.Letter.HalfOfCircle;
 import pl.krzysiek014.Math.MathOperations;
 
@@ -37,6 +38,8 @@ public class WindowController {
                         window.getChildren().add(new AlmostCircle(i,word,radiusInner));
                         break;
                     case "J":
+                        Point2D p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),200-(100*radiusInner));
+                        window.getChildren().add(new FullCircle(p.getX(),p.getY(),radiusInner*90));
                         break;
                     case "T":
                         Point2D start = oper.getPoint(i-(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
