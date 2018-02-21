@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import pl.krzysiek014.Letter.AlmostCircle;
 import pl.krzysiek014.Letter.HalfOfCircle;
 import pl.krzysiek014.Math.MathOperations;
 
@@ -33,6 +34,7 @@ public class WindowController {
             for(int i =0, count = 0;i<360;i+=360/list.length,count++){
                 switch (list[count].toUpperCase()){
                     case "B":
+                        window.getChildren().add(new AlmostCircle(i,word,radiusInner));
                         break;
                     case "J":
                         break;

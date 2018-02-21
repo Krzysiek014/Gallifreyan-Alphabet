@@ -10,11 +10,11 @@ import pl.krzysiek014.Math.MathOperations;
  * Created by Krzysiek014 on 21.02.2018.
  */
 public class AlmostCircle extends Arc {
-    public AlmostCircle(double angle, Circle word){
+    public AlmostCircle(double angle, Circle word,double factor){
         MathOperations oper = new MathOperations();
 
-        this.setRadiusX(100);
-        this.setRadiusY(100);
+        this.setRadiusX(100*factor);
+        this.setRadiusY(100*factor);
 
         Point2D p = oper.getPoint(angle,word.getCenterX(),word.getCenterY(),oper.calculateRadius(word.getRadius(),this));
         this.setCenterX(p.getX());
