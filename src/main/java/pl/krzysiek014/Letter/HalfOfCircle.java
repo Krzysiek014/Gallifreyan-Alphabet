@@ -1,8 +1,11 @@
 package pl.krzysiek014.Letter;
 
+import javafx.geometry.Point2D;
 import javafx.scene.shape.ArcTo;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
+import pl.krzysiek014.Math.MathOperations;
 
 /**
  * Created by Krzysiek014 on 21.02.2018.
@@ -11,15 +14,21 @@ public class HalfOfCircle extends Path{
 
     private ArcTo arcTo;
     MoveTo start;
+    Point2D startPoint,endPoint;
 
-    public HalfOfCircle(double startX, double startY, double encX, double endY){
-        start = new MoveTo(startX,startY);
+    public HalfOfCircle(Circle word, double radiusInner, double i){
+        MathOperations oper = new MathOperations();
+
+        startPoint = oper.getPoint(i-(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
+        endPoint = oper.getPoint(i+(radiusInner*30),word.getCenterX(),word.getCenterY(),word.getRadius());
+
+        start = new MoveTo(startPoint.getX(),startPoint.getY());
 
         arcTo = new ArcTo();
         arcTo.setRadiusX(1);
         arcTo.setRadiusY(1);
-        arcTo.setX(encX);
-        arcTo.setY(endY);
+        arcTo.setX(endPoint.getX());
+        arcTo.setY(endPoint.getY());
         arcTo.setSweepFlag(true);
 
         this.getElements().addAll(start,arcTo);
