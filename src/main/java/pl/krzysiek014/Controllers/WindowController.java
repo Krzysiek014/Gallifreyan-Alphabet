@@ -239,7 +239,31 @@ public class WindowController {
                             ld = new LinesAndDots("lines",1,info[0],info[1],radiusInner*20,info[4]);
                             window.getChildren().addAll(ld.getLines());
                         }
-
+                        break;
+                    case "U":
+                        if(list[count-1].matches("[TRSVW]")){
+                            info = ((HalfOfCircle)listOfLetters.get(listOfLetters.size()-1)).getInfo();
+                            Point2D p = oper.getPoint(info[4],word.getCenterX(),word.getCenterY(),word.getRadius());
+                            window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
+                            ld = new LinesAndDots("lines",1,new Vowel(p.getX(),p.getY(),radiusInner*20),info[4]-180);
+                            window.getChildren().addAll(ld.getLines());
+                        }else if(list[count-1].matches("[YZX]")){
+                            info = ((FullCircleOnLine)listOfLetters.get(listOfLetters.size()-1)).getInfo();
+                            Point2D p = oper.getPoint(info[4],word.getCenterX(),word.getCenterY(),word.getRadius());
+                            window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
+                            ld = new LinesAndDots("lines",1,new Vowel(p.getX(),p.getY(),radiusInner*20),info[4]-180);
+                            window.getChildren().addAll(ld.getLines());
+                        }else if(list[count-1].matches("[JKLMNP]")){
+                            info = ((FullCircle)listOfLetters.get(listOfLetters.size()-1)).getInfo();
+                            window.getChildren().addAll(new Vowel(info[0],info[1],radiusInner*20));
+                            ld = new LinesAndDots("lines",1,info[0],info[1],radiusInner*20,info[4]-180);
+                            window.getChildren().addAll(ld.getLines());
+                        }else if(list[count-1].matches("[BDFGH]")){
+                            info = ((AlmostCircle)listOfLetters.get(listOfLetters.size()-1)).getInfo();
+                            window.getChildren().addAll(new Vowel(info[0],info[1],radiusInner*20));
+                            ld = new LinesAndDots("lines",1,info[0],info[1],radiusInner*20,info[4]-180);
+                            window.getChildren().addAll(ld.getLines());
+                        }
                         break;
                     default:
                         break;
