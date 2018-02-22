@@ -161,7 +161,10 @@ public class WindowController {
                         listOfLetters.add(fullCircleOnLine);
                         break;
                     case "O":
-                        if(list[count-1].matches("[TRSVW]")){
+                        if(count==0) {
+                            Point2D p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),word.getRadius()-(40*radiusInner));
+                            window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
+                        }else if(list[count-1].matches("[TRSVW]")){
                             info = ((HalfOfCircle)listOfLetters.get(listOfLetters.size()-1)).getInfo();
                             Point2D p = oper.getPoint(info[4]+130,info[0],info[1],Math.sqrt(info[2]+info[3]));
                             window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
@@ -183,7 +186,10 @@ public class WindowController {
                         }
                         break;
                     case "A":
-                        if(list[count-1].matches("[TRSVW]")){
+                        if(count==0) {
+                            Point2D p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),word.getRadius()+(40*radiusInner));
+                            window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
+                        }else if(list[count-1].matches("[TRSVW]")){
                             info = ((HalfOfCircle)listOfLetters.get(listOfLetters.size()-1)).getInfo();
                             Point2D p = oper.getPoint(info[4],info[0],info[1],Math.sqrt(info[2]+info[3])-(40*radiusInner));
                             window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
@@ -205,7 +211,10 @@ public class WindowController {
                         }
                         break;
                     case "E":
-                        if(list[count-1].matches("[TRSVW]")){
+                        if(count==0) {
+                            Point2D p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),word.getRadius());
+                            window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
+                        }else if(list[count-1].matches("[TRSVW]")){
                             info = ((HalfOfCircle)listOfLetters.get(listOfLetters.size()-1)).getInfo();
                             Point2D p = oper.getPoint(info[4],word.getCenterX(),word.getCenterY(),word.getRadius());
                             window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
@@ -225,7 +234,12 @@ public class WindowController {
                         }
                         break;
                     case "I":
-                        if(list[count-1].matches("[TRSVW]")){
+                        if(count==0) {
+                            Point2D p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),word.getRadius());
+                            window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
+                            ld = new LinesAndDots("lines",1,new Vowel(p.getX(),p.getY(),radiusInner*20),i);
+                            window.getChildren().addAll(ld.getLines());
+                        }else if(list[count-1].matches("[TRSVW]")){
                             info = ((HalfOfCircle)listOfLetters.get(listOfLetters.size()-1)).getInfo();
                             Point2D p = oper.getPoint(info[4],word.getCenterX(),word.getCenterY(),word.getRadius());
                             window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
@@ -255,7 +269,12 @@ public class WindowController {
                         }
                         break;
                     case "U":
-                        if(list[count-1].matches("[TRSVW]")){
+                        if(count==0){
+                            Point2D p = oper.getPoint(i,word.getCenterX(),word.getCenterY(),word.getRadius());
+                            window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
+                            ld = new LinesAndDots("lines",1,new Vowel(p.getX(),p.getY(),radiusInner*20),i-180);
+                            window.getChildren().addAll(ld.getLines());
+                        }else if(list[count-1].matches("[TRSVW]")){
                             info = ((HalfOfCircle)listOfLetters.get(listOfLetters.size()-1)).getInfo();
                             Point2D p = oper.getPoint(info[4],word.getCenterX(),word.getCenterY(),word.getRadius());
                             window.getChildren().addAll(new Vowel(p.getX(),p.getY(),radiusInner*20));
